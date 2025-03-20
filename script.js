@@ -4,9 +4,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    menuToggle.addEventListener('click', function () {
-        navLinks.classList.toggle('active');
-    });
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function () {
+            navLinks.classList.toggle('active');
+        });
+    }
 
     // Close menu when clicking on a link
     document.querySelectorAll('.nav-links a').forEach(link => {
@@ -33,56 +35,34 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Financial chart initialization - Updated to use percentages
-    const ctx = document.getElementById('revenueChart').getContext('2d');
+    const ctx = document.getElementById('revenueChart');
 
-    // Revenue data with percentages instead of absolute values
-    const NE45RevenueData = {
-        labels: ['Assinaturas (40%)', 'Receita Compartilhada (30%)', 'Afiliados (20%)', 'Consultoria (10%)'],
-        datasets: [{
-            label: 'Distribuição da Receita (%)',
-            data: [40, 30, 20, 10], // Updated percentages
-            backgroundColor: [
-                '#2A5C82', // Primary color for Assinatura
-                '#D4A418', // Secondary color for Receita Compartilhada
-                '#5A8D7F', // Accent color for Afiliados
-                '#777777'  // Grey for Consultoria
-            ],
-            borderColor: [
-                '#2A5C82',
-                '#D4A418',
-                '#5A8D7F',
-                '#777777'
-            ],
-            borderWidth: 1
-        }]
-    };
-
-    // Create the chart
-    new Chart(ctx, {
-        type: 'doughnut', // Changed from pie to doughnut
-        data: NE45RevenueData,
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            plugins: {
-                legend: {
-                    position: 'right',
-                    labels: {
-                        font: {
-                            size: 14
-                        }
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function (context) {
-                            return ` ${context.label}: ${context.raw}% do total`;
-                        }
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Assinatura SaaS', 'Receita Compartilhada', 'Modelo de Afiliados', 'Consultoria em IA'],
+                datasets: [{
+                    data: [40, 30, 20, 10],
+                    backgroundColor: [
+                        '#2A5C82',
+                        '#3E8EBA',
+                        '#64B5E8',
+                        '#A8D5F7'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
                     }
                 }
             }
-        }
-    });
+        });
+    }
 
     // Simulator functionality
     const currentCostSlider = document.getElementById('currentCost');
@@ -92,25 +72,31 @@ document.addEventListener('DOMContentLoaded', function () {
     const calculateBtn = document.getElementById('calculateBtn');
     const savingsResult = document.getElementById('savingsResult');
 
-    // Update slider display values
-    currentCostSlider.addEventListener('input', function () {
-        costValue.textContent = this.value + '%';
-    });
+    // Atualização do simulador financeiro
+    const savingsCalculator = {
+        baseSavings: 40, // % base de economia
+        contentMultiplier: 0.5 // R$ 0,50 por artigo
+    };
 
-    contentAmountSlider.addEventListener('input', function () {
-        contentValue.textContent = this.value + '%';
-    });
+    if (currentCostSlider && contentAmountSlider) {
+        currentCostSlider.addEventListener('input', function () {
+            costValue.textContent = this.value + '%';
+        });
 
-    // Calculate savings when button is clicked
-    calculateBtn.addEventListener('click', function () {
-        const currentCost = parseInt(currentCostSlider.value);
-        const contentAmount = parseInt(contentAmountSlider.value);
+        contentAmountSlider.addEventListener('input', function () {
+            contentValue.textContent = this.value + '%';
+        });
 
-        // Calculate savings - base algorithm: 40% savings at 200% content
-        const savingsPercentage = Math.round(40 * (currentCost / 50));
+        calculateBtn.addEventListener('click', function () {
+            const costPercent = parseInt(currentCostSlider.value);
+            const contentPercent = parseInt(contentAmountSlider.value);
 
-        savingsResult.innerHTML = `Economia potencial: <span>${savingsPercentage}%</span> nos custos com <span>${contentAmount}%</span> mais conteúdo`;
-    });
+            // Calculando com base nos novos parâmetros
+            const savings = Math.min(Math.round(savingsCalculator.baseSavings * (costPercent / 50)), 95);
+
+            savingsResult.innerHTML = `Economia potencial: <span>${savings}%</span> nos custos com <span>${contentPercent}%</span> mais conteúdo`;
+        });
+    }
 
     // CTA buttons functionality
     const trialBtn = document.getElementById('trial-btn');
@@ -151,4 +137,41 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // Microinterações nos cards (hover effect)
+    const cards = document.querySelectorAll('.pillar-card, .model-card, .tech-item, .case-card');
+
+    cards.forEach(card => {
+        card.style.transition = 'transform 0.3s, box-shadow 0.3s';
+
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-5px)';
+            card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+        });
+    });
+
+    // Schema markup para SEO
+    const schemaScript = document.createElement('script');
+    schemaScript.type = 'application/ld+json';
+    schemaScript.text = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "NewsMediaOrganization",
+        "name": "NE45 + Jornal.IA",
+        "url": window.location.href,
+        "logo": window.location.origin + "/images/logo.png",
+        "sameAs": [
+            "https://www.facebook.com/ne45jornalia",
+            "https://www.instagram.com/ne45jornalia"
+        ],
+        "areaServed": {
+            "@type": "Place",
+            "name": "Nordeste do Brasil"
+        }
+    });
+    document.head.appendChild(schemaScript);
 });

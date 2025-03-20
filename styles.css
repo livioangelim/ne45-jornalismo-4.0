@@ -652,6 +652,149 @@ img {
     font-weight: 500;
 }
 
+/* Adicionando os novos estilos para as seções recém-criadas */
+
+/* Hero Stats */
+.hero-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 1.5rem;
+}
+
+.stat-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.stat-item h3 {
+    color: #2A5C82;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Tech Stack */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.tech-item {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.tech-item img {
+    height: 40px;
+    width: auto;
+    margin-bottom: 0.8rem;
+}
+
+.tech-item p {
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Case Studies */
+.case-studies {
+    padding: 4rem 0;
+    background-color: #f9f9f9;
+}
+
+.case-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.case-card h3 {
+    color: #2A5C82;
+    margin-bottom: 0.5rem;
+}
+
+.case-card p {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.case-card video {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* CTA Offer */
+.cta-offer {
+    background-color: rgba(42, 92, 130, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.cta-offer p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.cta-offer i {
+    color: #e74c3c;
+    margin-right: 0.5rem;
+}
+
+.btn-alert {
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.btn-alert:hover {
+    background-color: #c0392b;
+}
+
+/* Trust Badges */
+.trust-badges {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.trust-badges img {
+    height: 40px;
+    width: auto;
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
     .pillar-card {
@@ -720,6 +863,18 @@ img {
 
     .comparison-table {
         font-size: 0.9rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+    }
+
+    .tech-stack {
+        flex-direction: column;
+    }
+
+    .tech-item {
+        width: 100%;
     }
 }
 
