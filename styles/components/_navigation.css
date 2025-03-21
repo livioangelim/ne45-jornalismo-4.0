@@ -1,0 +1,98 @@
+@layer components {
+
+    /* Header & Navigation Styles */
+    .header {
+        background-color: var(--color-background-alt);
+        box-shadow: var(--shadow-sm);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: var(--z-index-fixed);
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--space-md) 0;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-primary);
+    }
+
+    .nav-links {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin-left: 30px;
+    }
+
+    .nav-links a {
+        color: var(--color-primary-dark);
+        font-weight: 500;
+        transition: var(--transition-base);
+        position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: var(--color-secondary);
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-secondary);
+        transition: var(--transition-base);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--color-primary);
+    }
+
+    /* Mobile Navigation */
+    @media (width < 768px) {
+        .menu-toggle {
+            display: block;
+        }
+
+        .nav-links {
+            position: fixed;
+            flex-direction: column;
+            top: 70px;
+            left: -100%;
+            background-color: var(--color-background-alt);
+            width: 100%;
+            transition: var(--transition-base);
+            height: calc(100vh - 70px);
+            align-items: center;
+            padding-top: 30px;
+            z-index: var(--z-index-dropdown);
+        }
+
+        .nav-links.active {
+            left: 0;
+        }
+
+        .nav-links li {
+            margin: 0 0 20px 0;
+        }
+    }
+}

@@ -1,0 +1,84 @@
+/* Design Tokens and Variables */
+:root {
+    /* Color Palette */
+    --color-primary: #002E5D;
+    --color-primary-dark: #001F3F;
+    --color-primary-light: #2A5C82;
+    --color-secondary: #FF9933;
+    --color-secondary-dark: #E68A2E;
+    --color-accent: #D1D1D1;
+    --color-light: #f4f4f4;
+    --color-white: #FFFFFF;
+    --color-text: #333333;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    --gradient-secondary: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
+
+    /* Typography Scale - Using Fluid Typography with clamp() */
+    --text-xs: clamp(0.75rem, 0.7rem + 0.1vw, 0.875rem);
+    --text-sm: clamp(0.875rem, 0.8rem + 0.15vw, 1rem);
+    --text-base: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+    --text-lg: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+    --text-xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+    --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+    --text-3xl: clamp(1.8rem, 1.6rem + 1.2vw, 2.5rem);
+    --text-4xl: clamp(2.25rem, 2rem + 1.5vw, 3rem);
+
+    /* Font Weights */
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+
+    /* Spacing Scale - Based on 0.5rem (8px) base unit */
+    --space-unit: 0.5rem;
+    --space-xs: calc(var(--space-unit) * 0.5);
+    /* 4px */
+    --space-sm: var(--space-unit);
+    /* 8px */
+    --space-md: calc(var(--space-unit) * 2);
+    /* 16px */
+    --space-lg: calc(var(--space-unit) * 3);
+    /* 24px */
+    --space-xl: calc(var(--space-unit) * 4);
+    /* 32px */
+    --space-2xl: calc(var(--space-unit) * 6);
+    /* 48px */
+    --space-3xl: calc(var(--space-unit) * 8);
+    /* 64px */
+    --space-4xl: calc(var(--space-unit) * 10);
+    /* 80px */
+
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-pill: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-focus: 0 0 0 3px rgba(0, 46, 93, 0.3);
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 300ms ease;
+    --transition-slow: 500ms ease;
+
+    /* Z-index layers */
+    --z-below: -1;
+    --z-normal: 0;
+    --z-above: 1;
+    --z-header: 100;
+    --z-modal: 200;
+    --z-toast: 300;
+
+    /* Container max-widths */
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1200px;
+}

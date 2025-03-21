@@ -1,0 +1,106 @@
+/* Android-specific optimizations */
+@layer utilities {
+
+    /* Prevent overscroll effects */
+    html {
+        overscroll-behavior: contain;
+    }
+
+    /* Hardware acceleration for animations */
+    .hw-accelerated {
+        will-change: transform;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+    }
+
+    /* Touch optimized targets */
+    .touch-target {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    /* Reduce animation for users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+
+    /* Custom Android device optimizations */
+    @media (--fold-device) {
+        .fold-optimize {
+            font-size: 90%;
+            padding: var(--space-xs);
+        }
+    }
+
+    @media (--low-res-device) {
+        body {
+            font-size: 14px;
+        }
+
+        .low-res-optimize {
+            padding: var(--space-xs);
+            margin: var(--space-xs) 0;
+        }
+    }
+
+    /* Active state for touch devices */
+    @media (--touch-device) {
+
+        .btn:active,
+        .nav-links a:active {
+            background-color: rgba(0, 46, 93, 0.1);
+            transition: background-color 50ms linear;
+        }
+
+        /* Enhanced touch targets */
+        .nav-links a,
+        .btn,
+        .menu-toggle,
+        input[type="range"],
+        .timeline-item::after {
+            min-height: 44px;
+            min-width: 44px;
+            -webkit-tap-highlight-color: rgba(0, 46, 93, 0.1);
+        }
+
+        /* Optimized sliders for touch */
+        .slider {
+            height: 20px;
+        }
+
+        .slider::-webkit-slider-thumb {
+            width: 26px;
+            height: 26px;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 26px;
+            height: 26px;
+        }
+    }
+
+    /* Samsung Internet Browser specific fixes */
+    @supports (-webkit-appearance:none) and (not (overflow:-webkit-marquee)) and (not (-ms-ime-align:auto)) and (not (-moz-appearance:none)) {
+        .hw-accelerated {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    /* MIUI Browser and Android WebViews */
+    @supports (-webkit-overflow-scrolling: touch) {
+        .scrollable-container {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Disable hover states on mobile */
+        .remove-hover-mobile:hover {
+            transform: none !important;
+            box-shadow: none !important;
+        }
+    }
+}

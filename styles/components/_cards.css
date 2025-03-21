@@ -1,0 +1,172 @@
+@layer components {
+
+    /* Base Card Styles */
+    .card {
+        background-color: var(--color-background-alt);
+        border-radius: var(--border-radius-md);
+        padding: var(--space-lg);
+        box-shadow: var(--shadow-md);
+        transition: var(--transition-base);
+        position: relative;
+        overflow: hidden;
+
+        /* Performance optimizations */
+        will-change: transform, box-shadow;
+        /* Hardware acceleration */
+        backface-visibility: hidden;
+        transform: translateZ(0);
+
+        /* Add content-visibility to improve performance for off-screen cards */
+        content-visibility: auto;
+        contain-intrinsic-size: 300px;
+    }
+
+    /* Orange gradient effect on hover */
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 0;
+        background: linear-gradient(135deg, transparent 50%, var(--color-secondary) 50%);
+        opacity: 0;
+        border-radius: 0 var(--border-radius-md) 0 0;
+        transition: all 0.3s ease;
+        z-index: 1;
+    }
+
+    .card:hover::before {
+        width: 100px;
+        height: 100px;
+        opacity: 0.7;
+        transform: translate(0, 0);
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    /* Card Variants */
+    .pillar-card {
+        text-align: center;
+    }
+
+    .pillar-card .pillar-icon {
+        font-size: 3rem;
+        color: var(--color-primary);
+        margin-bottom: var(--space-md);
+    }
+
+    .model-card h3 {
+        display: flex;
+        align-items: center;
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--space-sm);
+        color: var(--color-primary);
+    }
+
+    .model-card h3 i {
+        margin-right: 10px;
+        color: var(--color-secondary);
+    }
+
+    /* Progress bar in cards */
+    .progress-bar {
+        background-color: #eee;
+        border-radius: 20px;
+        height: 24px;
+        margin: var(--space-sm) 0 var(--space-xs);
+        overflow: hidden;
+        position: relative;
+    }
+
+    .progress {
+        background-color: var(--color-secondary);
+        height: 100%;
+        border-radius: 20px;
+        transition: width 1s ease-in-out;
+    }
+
+    .progress-text {
+        display: block;
+        font-size: var(--font-size-sm);
+        font-weight: bold;
+        color: var(--color-primary-dark);
+        margin-bottom: var(--space-xs);
+        text-align: right;
+    }
+
+    .model-features {
+        padding-left: var(--space-md);
+        margin-top: var(--space-md);
+    }
+
+    .model-features li {
+        margin-bottom: var(--space-xs);
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .model-features li i {
+        margin-right: var(--space-xs);
+        color: var(--color-secondary);
+        min-width: 20px;
+    }
+
+    /* Card Grid Layouts */
+    .pillars {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+        gap: var(--space-md);
+        margin-top: var(--space-lg);
+    }
+
+    .financial-models {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--space-md);
+        margin-top: var(--space-lg);
+    }
+
+    /* Touch-specific optimizations */
+    @media (hover: none) {
+        .card {
+            transition: transform 0.15s ease;
+        }
+
+        .card:active::before {
+            width: 80px;
+            height: 80px;
+            opacity: 0.7;
+        }
+
+        .card:active {
+            transform: scale(0.98);
+        }
+    }
+
+    /* Responsive adjustments */
+    @media (width < 992px) {
+        .card {
+            padding: var(--space-md);
+        }
+
+        .card:hover::before,
+        .card:active::before {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    @media (width < 576px) {
+
+        .card:hover::before,
+        .card:active::before {
+            width: 60px;
+            height: 60px;
+        }
+    }
+}

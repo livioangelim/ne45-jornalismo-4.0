@@ -1,0 +1,41 @@
+@layer layout {
+
+    /* Container Layout */
+    .container {
+        width: 90%;
+        max-width: var(--container-max-width);
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+    }
+
+    /* Section Layout */
+    section {
+        padding: var(--space-xl) 0;
+    }
+
+    /* Dark and light section alternating */
+    section.bg-light {
+        background-color: var(--color-background);
+    }
+
+    section.bg-dark {
+        background-color: var(--color-primary);
+        color: var(--color-text-light);
+    }
+
+    section.bg-dark .section-title {
+        color: var(--color-text-light);
+    }
+
+    /* Responsive container adjustments */
+    @media (width < 576px) {
+        .container {
+            width: 95%;
+            padding: 0 calc(var(--container-padding) / 2);
+        }
+
+        section {
+            padding: var(--space-lg) 0;
+        }
+    }
+}
