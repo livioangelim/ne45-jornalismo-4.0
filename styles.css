@@ -1,17 +1,12 @@
 /* Base Styles and Variables */
 :root {
     --primary-color: #002E5D;
-    /* Dark Blue - Main brand color */
     --secondary-color: #FF9933;
-    /* Orange - Accent color */
     --accent-color: #D1D1D1;
-    /* Light Gray - Secondary accent */
     --dark-color: #001F3F;
-    /* Darker shade of blue */
     --light-color: #f4f4f4;
     --text-color: #333;
     --text-light: #FFFFFF;
-    /* White text for dark backgrounds */
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
 }
@@ -441,15 +436,20 @@ img {
 .benefits-list li {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 1.1rem;
     background-color: rgba(42, 92, 130, 0.1);
     padding: 10px 15px;
     border-radius: 8px;
+    text-align: left;
 }
 
 .benefits-list li i {
     color: var(--secondary-color);
-    margin-right: 10px;
+    margin-right: 15px;
+    min-width: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 /* Why Our Approach Section */
@@ -471,9 +471,10 @@ img {
 
 .comparison-table th,
 .comparison-table td {
-    padding: 15px;
+    padding: 18px 20px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    line-height: 1.5;
 }
 
 .comparison-table th {
@@ -852,162 +853,404 @@ img {
         flex-direction: column;
     }
 
-    padding-right: 0;
-    margin-bottom: 40px;
-    padding-right: 30px;
-}
-}
+    .hero-content {
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
 
-.timeline-item {
-    em:nth-child(even) {
+    .timeline-item:nth-child(even) {
         width: 100%;
         left: 0;
         padding-left: 70px;
     }
 
-    padding-right: 30px;
-}
+    .timeline-item:nth-child(odd) {
+        padding-right: 30px;
+    }
 
-re {
-    left: 40px;
+    .timeline::before {
+        left: 40px;
+    }
 
-    .timeline-item:nth-child(even) {}
-
-    left: 0;
-}
-
-left: 30px !important;
-
-.timeline::before {}
-
-left: 40px;
-}
-}
-
-768px) {
     .timeline-item::after {
         left: 30px !important;
-        display: block;
     }
-}
+
+    /* Fixed Timeline for Mobile Views */
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 70px !important;
+        padding-right: 20px !important;
+    }
+
+    .timeline-item::after {
+        left: 30px !important;
+        right: auto !important;
+    }
+
+    .timeline::before {
+        left: 40px !important;
+    }
 }
 
 @media (max-width: 768px) {
-    fixed;
+    .header {
+        position: fixed;
+    }
 
     .menu-toggle {
         display: block;
     }
 
-    olor: white;
-
     .nav-links {
-        px);
         position: fixed;
-        mn;
+        flex-direction: column;
         top: 70px;
         left: -100%;
-        lex-start;
         background-color: white;
         width: 100%;
         transition: var(--transition);
         height: calc(100vh - 70px);
-    }
-
-    flex-direction: column;
-    align-items: center;
-
-    ctive {
-        justify-content: flex-start;
-        left: 0;
+        align-items: center;
         padding-top: 30px;
     }
 
-    transition: var(--transition);
-}
-
-margin: 0 0 20px 0;
-
-.nav-links.active {}
-
-left: 0;
-}
-
-flex-basis: 100%;
-
-.nav-links li {}
-
-margin: 0 0 20px 0;
-}
-
-font-size: 0.9rem;
-
-.pillar-card {}
-
-flex-basis: 100%;
-}
-
-flex-direction: column;
-
-.comparison-table {}
-
-font-size: 0.9rem;
-}
-
-flex-direction: column;
-
-.hero-stats {}
-
-flex-direction: column;
-}
-
-width: 100%;
-
-.tech-stack {}
-
-flex-direction: column;
-}
-}
-
-dth: 576px) {
-    .tech-item {
-        width: 100%;
-        font-size: 2rem;
+    .nav-links.active {
+        left: 0;
     }
-}
+
+    .nav-links li {
+        margin: 0 0 20px 0;
+    }
+
+    .pillar-card {
+        flex-basis: 100%;
+        font-size: 0.9rem;
+    }
+
+    .comparison-table {
+        font-size: 0.9rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+    }
+
+    .tech-stack {
+        flex-direction: column;
+        width: 100%;
+    }
 }
 
 @media (max-width: 576px) {
-    font-size: 1.8rem;
+    .hero h1 {
+        font-size: 1.8rem;
+    }
 
-    .hero h1 {}
+    .section-title {
+        font-size: 1.8rem;
+    }
 
-    font-size: 2rem;
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-large {
+        width: 100%;
+    }
+
+    .timeline-content {
+        padding: 15px;
+    }
+
+    .timeline-item {
+        padding-left: 60px !important;
+    }
+
+    .timeline::before {
+        left: 30px !important;
+    }
+
+    .timeline-item::after {
+        left: 20px !important;
+        width: 16px;
+        height: 16px;
+    }
 }
 
-flex-direction: column;
+/* ADDING ANDROID OPTIMIZATIONS */
+/* =============================================== */
+/* ANDROID-SPECIFIC OPTIMIZATIONS                  */
+/* =============================================== */
 
-.section-title {}
-
-font-size: 1.8rem;
+/* WebView Android Optimization */
+html {
+    overscroll-behavior: contain;
 }
 
-width: 100%;
-
-.cta-buttons {}
-
-
-
-
-
-
-
-}
+/* Optimizing touch targets for Android */
+.btn,
+.nav-links a {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-width: 100%;
+/* Feedback tátil específico para Android */
+button:active,
+.nav-links a:active,
+.btn:active {
+    background-color: rgba(0, 46, 93, 0.1);
+    transition: background-color 50ms linear;
+}
 
-.btn-large {}
+/* Hardware acceleration for animations */
+.pillar-card,
+.model-card,
+.timeline-item,
+.chart-container {
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
 
-flex-direction: column;
+/* Optimizing image loading */
+.hero-image img {
+    decoding: async;
+    loading: eager;
+}
+
+/* Fallbacks for browsers without flex/grid support */
+.pillars,
+.financial-models {
+    display: block\9;
+    /* IE9 fallback */
+}
+
+.pillars>div,
+.financial-models>div {
+    display: inline-block\9;
+    /* IE9 fallback */
+    width: 30%\9;
+    /* IE9 fallback */
+    vertical-align: top\9;
+    /* IE9 fallback */
+}
+
+/* Media Queries for Specific Android Devices */
+
+/* Dispositivos Fold (ex: Galaxy Z Fold) */
+@media (min-width: 280px) and (max-width: 653px) and (min-aspect-ratio: 1/1) {
+    .hero h1 {
+        font-size: 1.5rem;
+        word-break: keep-all;
+    }
+
+    .nav-links {
+        padding: 10px 5px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .container {
+        width: 95%;
+        padding: 0 10px;
+    }
+
+    .pillar-card {
+        padding: 15px;
+    }
+}
+
+/* Dispositivos de Baixa Resolução (ex: J2 Core) */
+@media (max-width: 360px) and (-webkit-max-device-pixel-ratio: 1.5) {
+    body {
+        font-size: 14px;
+    }
+
+    .pillar-card {
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+    .model-card {
+        padding: 15px;
+    }
+
+    .nav {
+        padding: 15px 0;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .hero-container {
+        padding-top: 10px;
+    }
+
+    .timeline-content {
+        padding: 15px;
+    }
+
+    .progress-text {
+        font-size: 0.8rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+
+    .footer {
+        padding: 30px 0;
+    }
+}
+
+/* Tablets Android (ex: Galaxy Tab) */
+@media (min-width: 600px) and (max-width: 800px) {
+    .financial-models {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .timeline-content {
+        padding: 15px;
+    }
+
+    .pillars {
+        flex-wrap: wrap;
+    }
+
+    .pillar-card {
+        flex-basis: calc(50% - 15px);
+        margin-bottom: 20px;
+    }
+
+    .hero-container {
+        flex-direction: column;
+    }
+
+    .hero-content {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .simulator-form {
+        flex-direction: column;
+    }
+}
+
+/* Suporte para detecção de touch */
+@media (hover: none) {
+
+    /* Estilos específicos para dispositivos touch */
+    .btn,
+    .nav-links a,
+    .menu-toggle,
+    .simulator-form button,
+    .timeline-item::after {
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0, 46, 93, 0.1);
+    }
+
+    /* Increase spacing for better touch targets */
+    .model-features li,
+    .benefits-list li,
+    .comparison-table td {
+        padding: 10px 0;
+    }
+
+    /* Enhance slider controls for touch */
+    .slider {
+        height: 20px;
+    }
+
+    .slider::-webkit-slider-thumb {
+        width: 26px;
+        height: 26px;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+/* Otimização para telas muito pequenas como smartwatches baseados em Android */
+@media (max-width: 280px) {
+    body {
+        font-size: 12px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 5px;
+    }
+
+    .hero h1 {
+        font-size: 1.3rem;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .nav {
+        padding: 10px 0;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .progress-bar {
+        height: 18px;
+    }
+}
+
+/* Specific fixes for Samsung Internet Browser */
+@supports (-webkit-appearance:none) and (not (overflow:-webkit-marquee)) and (not (-ms-ime-align:auto)) and (not (-moz-appearance:none)) {
+
+    /* Samsung Internet specific adjustments */
+    .pillar-card,
+    .model-card {
+        transform: translate3d(0, 0, 0);
+    }
+
+    .hero-image {
+        transform: translateZ(0);
+    }
+}
+
+/* Fix for MIUI Browser and other Android WebViews */
+@supports (-webkit-overflow-scrolling: touch) {
+
+    .hero-container,
+    .financial-models,
+    .timeline {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Fix for sticky hover states on mobile */
+    .pillar-card:hover,
+    .model-card:hover {
+        transform: none;
+    }
+}
+
+/* Touch active state */
+.touch-active {
+    background-color: rgba(0, 46, 93, 0.05);
 }
