@@ -1,12 +1,17 @@
 /* Base Styles and Variables */
 :root {
-    --primary-color: #2A5C82;
-    --secondary-color: #D4A418;
-    --accent-color: #5A8D7F;
-    --dark-color: #333;
+    --primary-color: #002E5D;
+    /* Dark Blue - Main brand color */
+    --secondary-color: #FF9933;
+    /* Orange - Accent color */
+    --accent-color: #D1D1D1;
+    /* Light Gray - Secondary accent */
+    --dark-color: #001F3F;
+    /* Darker shade of blue */
     --light-color: #f4f4f4;
     --text-color: #333;
-    --text-light: #f4f4f4;
+    --text-light: #FFFFFF;
+    /* White text for dark backgrounds */
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
 }
@@ -57,21 +62,23 @@ img {
 
 .btn-primary {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--text-light);
 }
 
 .btn-primary:hover {
-    background-color: #1d4a6d;
+    background-color: #00254D;
+    /* Slightly darker blue */
     transform: translateY(-2px);
 }
 
 .btn-secondary {
     background-color: var(--secondary-color);
-    color: var(--dark-color);
+    color: var(--text-light);
 }
 
 .btn-secondary:hover {
-    background-color: #b88e15;
+    background-color: #E68A2E;
+    /* Slightly darker orange */
     transform: translateY(-2px);
 }
 
@@ -119,6 +126,7 @@ img {
     padding: 20px 0;
 }
 
+/* Logo styling */
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
@@ -153,7 +161,7 @@ img {
 .hero {
     padding: 140px 0 80px;
     background-color: var(--primary-color);
-    color: white;
+    color: var(--text-light);
 }
 
 .hero-container {
@@ -179,11 +187,40 @@ img {
     opacity: 0.9;
 }
 
+/* Hero Image - Making it smaller */
 .hero-image {
     flex: 1;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: none;
+    position: relative;
+    max-width: 450px;
+    /* Reduced from 600px to 450px */
+    margin: 0 auto;
+    transition: none;
+}
+
+.hero-image:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: none;
+}
+
+.hero-image:hover img {
+    transform: none;
+}
+
+@media (max-width: 992px) {
+    .hero-image {
+        max-width: 100%;
+        margin-top: 40px;
+    }
 }
 
 /* Value Proposition Section */
@@ -212,6 +249,7 @@ img {
 .pillar-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-left: 3px solid var(--secondary-color);
 }
 
 .pillar-icon {
@@ -250,6 +288,7 @@ img {
 .model-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-left: 3px solid var(--secondary-color);
 }
 
 .model-card h3 {
@@ -454,7 +493,7 @@ img {
 .cta {
     padding: 80px 0;
     background-color: var(--primary-color);
-    color: white;
+    color: var(--text-light);
 }
 
 .cta .section-title {
@@ -496,7 +535,7 @@ img {
 .footer {
     padding: 40px 0;
     background-color: var(--dark-color);
-    color: white;
+    color: var(--text-light);
 }
 
 .footer-content {
@@ -795,6 +834,13 @@ img {
     width: auto;
 }
 
+/* Orange highlight for NE45 */
+.highlight {
+    color: var(--secondary-color);
+    /* This is the FF9933 orange color defined in :root */
+    font-weight: 700;
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
     .pillar-card {
@@ -806,92 +852,162 @@ img {
         flex-direction: column;
     }
 
-    .hero-content {
-        padding-right: 0;
-        margin-bottom: 40px;
-    }
+    padding-right: 0;
+    margin-bottom: 40px;
+    padding-right: 30px;
+}
+}
 
-    .timeline-item {
+.timeline-item {
+    em:nth-child(even) {
         width: 100%;
-        padding-left: 70px;
-        padding-right: 30px;
-    }
-
-    .timeline-item:nth-child(even) {
         left: 0;
+        padding-left: 70px;
     }
 
-    .timeline::before {
-        left: 40px;
-    }
+    padding-right: 30px;
+}
 
+re {
+    left: 40px;
+
+    .timeline-item:nth-child(even) {}
+
+    left: 0;
+}
+
+left: 30px !important;
+
+.timeline::before {}
+
+left: 40px;
+}
+}
+
+768px) {
     .timeline-item::after {
         left: 30px !important;
+        display: block;
     }
+}
 }
 
 @media (max-width: 768px) {
+    fixed;
+
     .menu-toggle {
         display: block;
     }
 
+    olor: white;
+
     .nav-links {
+        px);
         position: fixed;
+        mn;
         top: 70px;
         left: -100%;
+        lex-start;
         background-color: white;
         width: 100%;
-        height: calc(100vh - 70px);
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 30px;
         transition: var(--transition);
+        height: calc(100vh - 70px);
     }
 
-    .nav-links.active {
+    flex-direction: column;
+    align-items: center;
+
+    ctive {
+        justify-content: flex-start;
         left: 0;
+        padding-top: 30px;
     }
 
-    .nav-links li {
-        margin: 0 0 20px 0;
-    }
+    transition: var(--transition);
+}
 
-    .pillar-card {
-        flex-basis: 100%;
-    }
+margin: 0 0 20px 0;
 
-    .comparison-table {
-        font-size: 0.9rem;
-    }
+.nav-links.active {}
 
-    .hero-stats {
-        flex-direction: column;
-    }
+left: 0;
+}
 
-    .tech-stack {
-        flex-direction: column;
-    }
+flex-basis: 100%;
 
+.nav-links li {}
+
+margin: 0 0 20px 0;
+}
+
+font-size: 0.9rem;
+
+.pillar-card {}
+
+flex-basis: 100%;
+}
+
+flex-direction: column;
+
+.comparison-table {}
+
+font-size: 0.9rem;
+}
+
+flex-direction: column;
+
+.hero-stats {}
+
+flex-direction: column;
+}
+
+width: 100%;
+
+.tech-stack {}
+
+flex-direction: column;
+}
+}
+
+dth: 576px) {
     .tech-item {
         width: 100%;
+        font-size: 2rem;
     }
+}
 }
 
 @media (max-width: 576px) {
-    .hero h1 {
-        font-size: 2rem;
-    }
+    font-size: 1.8rem;
 
-    .section-title {
-        font-size: 1.8rem;
-    }
+    .hero h1 {}
 
-    .cta-buttons {
-        flex-direction: column;
-    }
+    font-size: 2rem;
+}
 
-    .btn-large {
-        width: 100%;
-    }
+flex-direction: column;
+
+.section-title {}
+
+font-size: 1.8rem;
+}
+
+width: 100%;
+
+.cta-buttons {}
+
+
+
+
+
+
+
+}
+}
+
+width: 100%;
+
+.btn-large {}
+
+flex-direction: column;
 }
